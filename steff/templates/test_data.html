@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>
+    用户测试数据生成
+</h1>
+<p>
+    Automated Testing Platform
+</p>
+{% endblock %}
+
+{% block data %}
+<div class="container">
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">测试账号数量:</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="1">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelectSH">上海账户所在分区:</label>
+                <select class="form-control" id="exampleFormControlSelectSH">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+                <label for="exampleFormControlSelectSZ">深圳账户所在分区:</label>
+                <select class="form-control" id="exampleFormControlSelectSZ">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect2">是否需要添加AGW User:</label>
+                  <br>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option1" checked> 不需要
+                  </label>
+                    <p> &nbsp </p>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2"> 需 &nbsp&nbsp    要
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="exampleFormControlInputCash">所需资金:</label>
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">￥</span>
+                      </div>
+                      <input type="text" class="form-control" id="exampleFormControlInputCash" aria-label="Amount (to the nearest dollar)">
+                      <div class="input-group-append">
+                        <span class="input-group-text">.00</span>
+                      </div>
+                  </div>
+              </div>
+
+
+
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Example textarea</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+            </form>
+        </div>
+{% endblock %}
