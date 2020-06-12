@@ -5,33 +5,32 @@
 </h1>
 <p>
 
-    <div>
+    <div class="container">
     Automated Testing Platform
-    <div align="right">
-        <input class="btn btn-primary" float type="submit" value="Generte">
-    </div>
+
     </div>
 </p>
 {% endblock %}
 
 {% block data %}
 <div class="container">
-            <form>
+            <form action="/search_post" method="post">
+                {% csrf_token %}
               <div class="form-group">
-                <label for="exampleFormControlInput1">测试账号数量:</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="1">
+                <label for="inputAccountCount">测试账号数量:</label>
+                <input type="email" class="form-control" id="inputAccountCount" placeholder="1">
               </div>
               <div class="form-group">
-                <label for="exampleFormControlSelectSH">上海账户所在分区:</label>
-                <select class="form-control" id="exampleFormControlSelectSH">
+                <label for="selectPartitionSH">上海账户所在分区:</label>
+                <select class="form-control" id="selectPartitionSH">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
                   <option>4</option>
                   <option>5</option>
                 </select>
-                <label for="exampleFormControlSelectSZ">深圳账户所在分区:</label>
-                <select class="form-control" id="exampleFormControlSelectSZ">
+                <label for="selectPartitionSZ">深圳账户所在分区:</label>
+                <select class="form-control" id="selectPartitionSZ">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -40,7 +39,7 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="exampleFormControlSelect2">是否需要添加AGW User:</label>
+                <label>是否需要添加AGW User:</label>
                   <br>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                   <label class="btn btn-secondary active">
@@ -53,12 +52,12 @@
                 </div>
               </div>
               <div class="form-group">
-                  <label for="exampleFormControlInputCash">所需资金:</label>
+                  <label for="inputCash">所需资金:</label>
                   <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text">￥</span>
                       </div>
-                      <input type="text" class="form-control" id="exampleFormControlInputCash" aria-label="Amount (to the nearest dollar)">
+                      <input type="text" class="form-control" id="inputCash" aria-label="Amount (to the nearest dollar)">
                       <div class="input-group-append">
                         <span class="input-group-text">.00</span>
                       </div>
@@ -71,6 +70,29 @@
                 <label for="exampleFormControlTextarea1">Example textarea</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
+
+              <input  class="btn btn-primary" type="submit" value="Generte" align="right" style="float:right">
             </form>
         </div>
 {% endblock %}
+        {% block data_js %}
+
+            function generate(obj)
+            {
+                var form_data = {
+                    "account_count": $("#inputAccountCount").val(),
+                    "partition_sh": $("#selectPartitionSH").val(),
+                    "partition_sz": $("#selectPartitionSZ").val(),
+                    "required_cash": $("#inputCash").val(),
+                }
+
+                $.ajax({
+                    type: "GET",
+                    url: "steff/",
+                    data: form_data,
+                    success: function (result) {
+                        alert(form_data['required_cash'])
+                    },
+                });
+            }
+        {% endblock %}
